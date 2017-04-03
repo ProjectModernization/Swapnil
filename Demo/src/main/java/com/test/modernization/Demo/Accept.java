@@ -4,6 +4,7 @@ package com.test.modernization.Demo;
 import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.Calendar;
 import java.util.Date;
 import java.util.Scanner;
 
@@ -14,11 +15,11 @@ public class Accept {
 		String[] lineVector;
 		StudentDetails st = new StudentDetails();
 		CurrentDate date = new CurrentDate();
-		DayofYear dayOfYear = new DayofYear();
 		CurrentTime time = new CurrentTime();
 		
 		System.out.println("Enter student details using template below");
 	    System.out.println("Enter - ID,Surname,Initials,CourseCode,Gender");
+	    System.out.println("SSSSSSSNNNNNNNNIICCCCG");
 	    Scanner scan = new Scanner(System.in);
 	    
 	    line = scan.nextLine(); //read 1,2,3
@@ -26,7 +27,7 @@ public class Accept {
         //separate all values by comma
         lineVector = line.split(",");
 
-        //parsing the values to Integer
+        //parsing the values to Integer,String accordingly
         st.ID=Integer.parseInt(lineVector[0]);
         st.surname= lineVector[1];
         st.initials=lineVector[2];
@@ -45,6 +46,9 @@ public class Accept {
 	    time.currentMinute = Integer.parseInt(dateSplit[4]);
 	    time.CurrentSecond = Integer.parseInt(dateSplit[5]);
 	    
+	    Calendar calendar = Calendar.getInstance();
+	    int YearDay = calendar.get(Calendar.DAY_OF_YEAR);  
+	    
 	    
 	    String inputDate = new SimpleDateFormat("dd/MM/yyyy").format(new Date());
 	    SimpleDateFormat format1=new SimpleDateFormat("dd/MM/yyyy");
@@ -52,10 +56,11 @@ public class Accept {
 	    DateFormat format2=new SimpleDateFormat("EEEE"); 
 	    String finalDay=format2.format(dt1);
 	    System.out.println(finalDay);
-	    
+	        
 	    
 	    System.out.println("Name is: "+ st.initials+ " "+st.surname);
 	    System.out.println("Date is: "+ date.currentDay +" "+date.currentMonth+" "+date.currentYear);
+	    System.out.println("Today is day "+ YearDay +" of the year");
 	    System.out.println("Time is: "+time.currentHour+":"+time.currentMinute);
 	}
 
@@ -70,9 +75,6 @@ class StudentDetails {
 
 class CurrentDate{
 	int currentYear, currentMonth, currentDay;
-}
-class DayofYear{
-	int year, day;
 }
 class CurrentTime{
 	int currentHour, currentMinute,CurrentSecond;
