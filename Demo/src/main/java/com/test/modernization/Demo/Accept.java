@@ -19,7 +19,7 @@ public class Accept {
 		
 		System.out.println("Enter student details using template below");
 	    System.out.println("Enter - ID,Surname,Initials,CourseCode,Gender");
-	    System.out.println("SSSSSSSNNNNNNNNIICCCCG");
+	    
 	    Scanner scan = new Scanner(System.in);
 	    
 	    line = scan.nextLine(); //read 1,2,3
